@@ -1,8 +1,6 @@
 # Erlang
 FROM alpine:3.1
 
-RUN apk add --update bash && rm -rf /var/cache/apk/*
-
 RUN apk add --update-cache make wget git grep openssh-client && rm -rf /var/cache/apk/*
 RUN apk add --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ \
     erlang \
@@ -17,4 +15,4 @@ RUN apk add --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/
 	
 RUN git clone git://github.com/rebar/rebar.git && cd rebar && ./bootstrap && mv rebar /usr/local/bin/rebar && cd .. && rm -rf rebar/
 
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/bin/sh"]
